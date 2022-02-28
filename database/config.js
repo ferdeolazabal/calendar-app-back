@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-// const mongoose = require('mongoose');
 
 export const dbConnection = async () => {
     
@@ -11,14 +10,12 @@ export const dbConnection = async () => {
             useUnifiedTopology: true,
         });
 
+        // @ts-ignore
         console.log('DB connection successful'.bgGreen.black);
         
     } catch (error) {
         console.log(error);
+        // @ts-ignore
         throw new Error('DB connection error!'.bgRed.black);
     };
 };
-
-// module.exports = {
-//     dbConnection
-// }

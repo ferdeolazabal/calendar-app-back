@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 4000;
 
 dbConnection()
 app.use(cors());
-app.use(express.static('public'));
-app.use(express.json());
 app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.static('public'));
 
 // Routes
 app.use('/api/auth', authRouter );
