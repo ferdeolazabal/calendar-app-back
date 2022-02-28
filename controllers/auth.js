@@ -14,7 +14,7 @@ export const newUser = async ( req = request , res = response ) => {
         if ( emailExist ) {
             return res.status(400).json({
                 ok: false,
-                message: 'The email already exists'
+                msg: 'The email already exists'
             })
         }
 
@@ -58,7 +58,7 @@ export const userLogin = async (req, res = response ) => {
         if ( !user ) {
             return res.status(400).json({
                 ok: false,
-                message: 'Invalid email or password - email..'
+                msg: 'Invalid email or password - email..'
             })
         };
         // verificar password
@@ -66,7 +66,7 @@ export const userLogin = async (req, res = response ) => {
         if ( !validPassword ) {
             return res.status(400).json({
                 ok: false,
-                message: 'Invalid email or password - password..'
+                msg: 'Invalid email or password - password..'
             })
         };
 
@@ -102,7 +102,8 @@ export const renewToken = async (req, res = response ) => {
         res.json({
             ok: true,
             msg: 'Token renew Ok',
-            token
+            token,
+            uid, name
         });
 
     } catch (error) {
