@@ -1,7 +1,3 @@
-// const router = require('express').Router();
-// const { check } = require('express-validator');
-// const { newUser, userLogin, renewToken } = require('../controllers/auth');
-// const { validarCampos } = require('../middlewares/validate-fields');
 import { Router } from 'express';
 import { check } from 'express-validator';
 

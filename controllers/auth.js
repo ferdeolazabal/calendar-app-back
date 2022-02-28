@@ -1,6 +1,6 @@
 import { response, request } from 'express';
 import bcryptjs from 'bcryptjs';
-import Usuario from '../models/Usuario.js';
+import User from '../models/User.js';
 import { generarJwt } from '../helpers/jwt-generate.js';
 
 export const newUser = async ( req = request , res = response ) => {
@@ -10,7 +10,7 @@ export const newUser = async ( req = request , res = response ) => {
         const { name, email, password } = req.body
 
         // verificar email en db
-        const emailExist = await Usuario.findOne({ email })
+        const emailExist = await User.findOne({ email })
         if ( emailExist ) {
             return res.status(400).json({
                 ok: false,
@@ -18,7 +18,7 @@ export const newUser = async ( req = request , res = response ) => {
             })
         }
 
-        const user = new Usuario( { name, email, password } );
+        const user = new User( { name, email, password } );
         
         // encriptar contraseña del usuario
         const salt = await bcryptjs.genSalt(10);
@@ -54,7 +54,7 @@ export const userLogin = async (req, res = response ) => {
         const { email, password } = req.body
 
         // verificar email en db
-        const user = await Usuario.findOne({ email })
+        const user = await User.findOne({ email })
         if ( !user ) {
             return res.status(400).json({
                 ok: false,

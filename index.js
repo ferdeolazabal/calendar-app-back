@@ -3,8 +3,9 @@ import morgan from 'morgan';
 import dotenv from 'dotenv'
 import cors from 'cors'
 import colors from 'colors';
-import { authRouter } from './routes/auth.js';
 import { dbConnection } from './database/config.js';
+import { authRouter } from './routes/auth.js';
+import { eventRouter } from './routes/events.js';
 dotenv.config();
 
 const app = express();
@@ -16,8 +17,9 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(morgan('dev'));
 
-
+// Routes
 app.use('/api/auth', authRouter );
+app.use('/api/events', eventRouter );
 
 
 app.listen( PORT, () => {

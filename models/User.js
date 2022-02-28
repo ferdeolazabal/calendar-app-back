@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const { Schema, model } = mongoose;
 
-const UsuarioSchema = new Schema({
+const UserSchema = new Schema({
     name: {
         type: String,
         required: [true, 'El nombre es necesario']
@@ -19,5 +19,4 @@ const UsuarioSchema = new Schema({
 });
 
 
-export default model('Usuario', UsuarioSchema);
-// module.exports = model('Usuario', UsuarioSchema);
+export default model('User', UserSchema);
